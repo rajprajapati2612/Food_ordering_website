@@ -182,31 +182,41 @@ export const loginUser = async (req,res)=>{
 }
 
 
+// export const logoutUser = async (req,res)=>{
+//    try {
+//       const userId = req.userId;
+
+//       if (!userId) {
+//          return res.status(400).json({
+//             success: false,
+//             message: "User not authenticated"
+//          });
+//       }
+//       await Session.deleteMany({userId});
+//       await User.findByIdAndUpdate(userId,{isLoggedIn:false});
+//       return res.status(200).json({
+//          success: true,
+//          message: "Logged out successfully"
+//       })
+
+//    } catch (error) {
+//       return res.status(500).json({
+//          success: false,
+//          message: error.message
+//       })
+//    }
+// }
+
+
 export const logoutUser = async (req,res)=>{
-   try {
-      const userId = req.userId;
+   const token = req.cookies.token;
 
-      if (!userId) {
-         return res.status(400).json({
-            success: false,
-            message: "User not authenticated"
-         });
-      }
-      await Session.deleteMany({userId});
-      await User.findByIdAndUpdate(userId,{isLoggedIn:false});
-      return res.status(200).json({
-         success: true,
-         message: "Logged out successfully"
-      })
-
-   } catch (error) {
-      return res.status(500).json({
-         success: false,
-         message: error.message
-      })
-   }
+   res.clearCookie("token");
+   res.status(200).json({
+      success:true,
+      message:"User logout successfully"
+   })
 }
-
 
 export const forgotPassword = async (req,res)=>{
    try {
