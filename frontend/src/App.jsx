@@ -9,14 +9,16 @@ import VerifyOTP from './pages/VerifyOTP';
 import ChangePassword from './pages/ChangePassword';
 import ForgotPassword from './pages/ForgotPassword';
 import Verify from './pages/Verify';
+import ProtectedRoute from './components/ProtectedRoute';
+import PublicRoute from './components/PublicRoute';
 
 const App = () => {
   return (
     <div>
       <Routes>
-        <Route path='/home' element={<Home/>}></Route>
+        <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
         <Route path='/signup' element={<Signup/>}></Route>
-        <Route path='/login' element={<Login/>}></Route>
+        <Route path='/login' element={<PublicRoute><Login/></PublicRoute>}></Route>
         <Route path='/verify' element={<VerifyEmail/>}></Route>
         <Route path='/verify-otp/:email' element={<VerifyOTP/>}></Route>
         <Route path='/change-password/:email'  element={<ChangePassword/>}></Route>

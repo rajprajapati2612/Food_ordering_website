@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 
 
 import { Button } from "@/components/ui/button"
@@ -19,11 +19,13 @@ import { toast } from 'react-toastify'
 import { Link, useNavigate } from 'react-router-dom'
 // import { getData } from '@/context/userContext'
 
+import { AuthContext } from './auth.context.jsx';
 
 
 
 const Login = () => {
 //   const {setUser} = getData();
+  const {setUser,user} = useContext(AuthContext);
   const navigate = useNavigate();
   const [showPassword,setshowPassword] = useState(false);
   const [isLoading,setIsLoading] = useState(false);
@@ -47,16 +49,31 @@ const Login = () => {
     setIsLoading(true);
    try {
    
-    const res = await axios.post(`http://localhost:8000/user/login`,formData,{
-      headers:{
-        "Content-Type":"application/json"
-      }
-    })
+    // const res = await axios.post(`http://localhost:8000/user/login`,formData,{
+    //   headers:{
+    //     "Content-Type":"application/json"
+    //   }
+    // })
+
+    const res = await axios.post(
+  "http://localhost:8000/user/login",
+  formData,
+  {
+    headers: {
+      "Content-Type": "application/json",
+    },
+    withCredentials: true,
+  }
+);
    console.log("result ", res);
+   console.log("1 ",user);
     if(res.data.success){
+      setUser(res.data.user);
+      console.log("2 ",user);
       navigate('/home');
     //   setUser(res.data.user);
       localStorage.setItem("accessToken",res.data.accessToken);
+
       toast.success(res.data.message)
     }
    } catch (error) {

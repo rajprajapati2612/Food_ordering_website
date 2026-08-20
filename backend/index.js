@@ -3,11 +3,13 @@ import dotenv from "dotenv";
 import connectDB from "./database/db.js";
 import userRoute from "./routes/userRoute.js"
 import cors from "cors";
+import cookieParser from "cookie-parser";
 dotenv.config();  
 
 const app = express();
  const port = process.env.PORT || 8000;
  app.use(express.json());
+ app.use(cookieParser());
   app.use(cors({
    origin:'http://localhost:5173',
    credentials:true

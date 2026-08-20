@@ -147,21 +147,26 @@ export const loginUser = async (req,res)=>{
      await Session.create({userId:user._id});
 
      //generate tokens
-     const accessToken = jwt.sign({id:user._id},process.env.SECRET_KEY,{expiresIn:"10d"});
-     const refreshToken  =  jwt.sign({id:user._id},process.env.SECRET_KEY,{expiresIn:"30d"});
+    // const accessToken = jwt.sign({id:user._id},process.env.SECRET_KEY,{expiresIn:"10d"});
+    // const refreshToken  =  jwt.sign({id:user._id},process.env.SECRET_KEY,{expiresIn:"30d"});
+   
+
+  const token = jwt.sign({id:user._id,username:user.usernname},process.env.SECRET_KEY,{expiresIn:"1d"});
 
      user.isLoggedIn = true;
       
      await user.save();
 
-     
+     res.cookie("token", token);
 
      return res.status(200).json({
         success: true,
-        message: `Welcome to NotesApp ${user.username}`,
-        accessToken,
-        refreshToken,
-        user,
+        message: 'User Loggedin successfully',
+        user:{
+         id:user._id,
+         username: user.username,
+         email:user.email
+        }
 
      })
     
@@ -349,4 +354,20 @@ export const changePassword = async (req,res)=>{
       
    }
 
+}
+
+
+export const getMeController =async (req,res)=>{
+
+   const user = await User.findById(req.user.id);
+
+
+   res.status(200).json({
+      message:"user details fetched successfully",
+      user:{
+         id:user._id,
+         username:user.username,
+         email:user.email
+      }
+   })
 }
