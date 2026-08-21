@@ -19,7 +19,7 @@ const App = () => {
         <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
         <Route path='/signup' element={<PublicRoute><Signup/></PublicRoute>}></Route>
         <Route path='/login' element={<PublicRoute><Login/></PublicRoute>}></Route>
-        <Route path='/verify' element={<VerifyEmail/>}></Route>
+        <Route path='/verify-email' element={<VerifyEmail/>}></Route>
         <Route path='/verify-otp/:email' element={<VerifyOTP/>}></Route>
         <Route path='/change-password/:email'  element={<ChangePassword/>}></Route>
          <Route  path='/forgot-password' element={<ForgotPassword/>}/>
