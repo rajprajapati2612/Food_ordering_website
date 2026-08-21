@@ -16,8 +16,8 @@ const App = () => {
   return (
     <div>
       <Routes>
-        <Route path='/home' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
-        <Route path='/signup' element={<Signup/>}></Route>
+        <Route path='/' element={<ProtectedRoute><Home/></ProtectedRoute>}></Route>
+        <Route path='/signup' element={<PublicRoute><Signup/></PublicRoute>}></Route>
         <Route path='/login' element={<PublicRoute><Login/></PublicRoute>}></Route>
         <Route path='/verify' element={<VerifyEmail/>}></Route>
         <Route path='/verify-otp/:email' element={<VerifyOTP/>}></Route>
