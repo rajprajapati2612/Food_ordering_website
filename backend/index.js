@@ -20,6 +20,6 @@ const app = express();
 
  app.listen(port,()=>{
     connectDB();
-    console.log(process.env.MONGO_URL);
+   
     console.log("server is running on port 8000");
  })

@@ -26,7 +26,7 @@ export const registerUser = async (req,res)=>{
         const createUser = await User.create({username,email, password: hashedpassword});
         
      const token  =  jwt.sign({id:createUser._id},process.env.SECRET_KEY,{expiresIn:"10m"})
-     console.log("token", token);
+    // console.log("token", token);
 
      await  verifyMail(token,email);
        createUser.token = token;
@@ -102,9 +102,9 @@ export const loginUser = async (req,res)=>{
             message: "All fields are required",
         })
      }
-     console.log(email, password);
+  //   console.log(email, password);
      const user = await User.findOne({email});
-     console.log(user);
+  //   console.log(user);
 
      if(!user){
         return res.status(401).json({
@@ -221,9 +221,8 @@ export const logoutUser = async (req,res)=>{
 export const forgotPassword = async (req,res)=>{
    try {
       const {email} = req.body;
-      console.log(req.body);
-      console.log(email);
-      console.log("hello")
+      
+      
       if(!email){
          return res.status(400).json({
             success: false,
@@ -265,7 +264,7 @@ export const forgotPassword = async (req,res)=>{
 
 export const verifyOTP = async (req,res)=>{
    const {otp} = req.body;
-   console.log("opt ",otp);
+//   console.log("opt ",otp);
 
    const email = req.params.email;
    if(!otp){

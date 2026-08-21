@@ -16,7 +16,7 @@ export const AuthProvider = ({ children }) => {
         }
       );
 
-      console.log("Get Me:", response.data.user);
+    //  console.log("Get Me:", response.data.user);
 
       setUser(response.data.user);
     } catch (error) {
@@ -31,9 +31,9 @@ export const AuthProvider = ({ children }) => {
     getMe();
   }, []);
 
-  useEffect(() => {
-    console.log("Updated user:", user);
-  }, [user]);
+  // useEffect(() => {
+  //   console.log("Updated user:", user);
+  // }, [user]);
 
   return (
     <AuthContext.Provider
