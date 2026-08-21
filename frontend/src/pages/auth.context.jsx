@@ -10,7 +10,7 @@ export const AuthProvider = ({ children }) => {
   const getMe = async () => {
     try {
       const response = await axios.get(
-        "http://localhost:8000/user/get-me",
+        "https://food-ordering-website-backend-u9o1.onrender.com/user/get-me",
         {
           withCredentials: true,
         }
