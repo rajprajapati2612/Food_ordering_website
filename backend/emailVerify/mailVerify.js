@@ -77,12 +77,13 @@ export const verifyMail = async (token, email) => {
 
         const transporter = nodemailer.createTransport({
            // service: "gmail",
-            host: "smtp.gmail.com",
-            port: 587,
-            secure: false,
+           host: "smtp-relay.brevo.com",
+           port: 587,
+           secure: false,
+
             auth: {
-                user: process.env.MAIL_USER,
-                pass: process.env.MAIL_PASS
+               user: process.env.BREVO_SMTP_USER,
+               pass: process.env.BREVO_SMTP_KEY,
             }
         });
 
