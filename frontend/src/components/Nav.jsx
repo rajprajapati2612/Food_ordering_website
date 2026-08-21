@@ -49,7 +49,7 @@ const Nav = () => {
       setIsLoggingOut(true);
 
       const response = await axios.post(
-        "http://localhost:8000/user/logout",
+        "https://food-ordering-website-backend-u9o1.onrender.com/user/logout",
         {},
         {
           withCredentials: true,
