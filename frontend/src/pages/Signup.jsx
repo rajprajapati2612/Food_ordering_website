@@ -120,7 +120,7 @@ const Signup = () => {
       const { confirmPassword, ...signupData } = formData;
 
       const res = await axios.post(
-        "http://localhost:8000/user/register",
+        "https://food-ordering-website-backend-u9o1.onrender.com/user/register",
         signupData,
         {
           headers: {
