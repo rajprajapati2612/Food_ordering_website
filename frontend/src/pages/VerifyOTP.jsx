@@ -34,7 +34,7 @@
 //         }
 //         try {
 //           setIsLoading(true);
-//           const res  = await axios.post(`http://localhost:8000/user/verify-otp/${email}`,{
+//           const res  = await axios.post(`https://food-ordering-website-backend-u9o1.onrender.com/user/verify-otp/${email}`,{
 //             otp:finalOtp,
 //           })
 //           setSuccessMessage(res.data.message);
