@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react'
 import Nav from '../components/Nav'
 import { Categories } from '../categories'
-import Card from '../components/card'
+import Card from '../components/Card.jsx'
 import { food_items } from '../food'
 import { dataContext } from '../context/UserContext'
 import { RxCross2 } from "react-icons/rx";
-import Card2 from '../components/card2'
+import Card2 from '../components/Card2.jsx'
 import { useSelector } from 'react-redux'
 import { toast } from 'react-toastify'
 
